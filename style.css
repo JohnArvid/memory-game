@@ -1,11 +1,13 @@
-html{
-background: #ecf4f3;
+html {
+  background: #ecf4f3;
 }
+
 #root {
   background: #ecf4f3;
   height: 100%;
   padding-top: 0.5em;
 }
+
 #info {
   text-align: center;
   background: #555151;
@@ -14,10 +16,10 @@ background: #ecf4f3;
   padding: 0.3em;
   border-radius: 6px;
   font-size: 0.9em;
-  margin: 0 auto;
-  
+  margin: 0 auto;  
   display: block;
 }
+
 #btn-wrapper {
   display: flex;
   justify-content: center;
@@ -25,15 +27,18 @@ background: #ecf4f3;
   margin: 0 auto;
   margin-top: 0.5em;
 }
+
 button {
   font-weight: 700;
   margin-right: 0.5em;
 }
+
 p#msg {
   height: 1.1em;
   font-size: 1.1em;
   margin-top: 0.5em;
 }
+
 .row {
   display: flex;
   justify-content: space-evenly;
