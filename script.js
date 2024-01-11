@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+document.addEventListener('DOMContentLoaded', () => {
   //intialize counter for number of turns
   var roundsCnt = 0;
   //get all clickable cards
