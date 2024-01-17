@@ -1,15 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const uiElements = {
+    newGame: document.getElementById('nG'),
+    nextRound: document.getElementById('nR'),
+    flippedCards: document.querySelectorAll('.flipIt'),
+    message: document.getElementById('msg'),
+    roundCount: document.getElementById('rndCnt'),
+
+  }
+  
   //intialize counter for number of turns
   var roundsCnt = 0;
   //get all clickable cards
-  var clickableCards = $(".flip");
+  var clickableCards = document.querySelectorAll(".flip");
 
   //flip card triggered when clicked
   function checkCard() {
-    var numFlipped = $(".flipIt").length; //check how many cards are flipped
+    var numFlipped = document.querySelectorAll(".flipIt").length; //check how many cards are flipped
     if (numFlipped < 2) {//if they are less than 2
       this.classList.add("flipIt"); //flip the clicked card
-      numFlipped = $(".flipIt").length; //check how many cards are flipped
+      numFlipped = document.querySelectorAll(".flipIt").length; //check how many cards are flipped
     }
     if (numFlipped == 2) {//when 2 or more are flipped:
       $(".card").removeClass("flip");//make them not flippable
@@ -22,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (src1 == src2) {//do the src match on flipped cards?
         //if so then add .success and remove flipIt class on flipped cards
-        $("#msg").text("Success!");
+        document.getElementById("msg").textContent = "Success!";
         flippedCards.addClass("success");
         flippedCards.removeClass("flip");
         $("#nR").attr("disabled", false);
@@ -30,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       else {//otherwise womp womp!
         //print msg and activate next round button
-        $("#msg").text("Try again!");
+        uiElements.message.textContent = "Try again!";
         $("#nR").prop("disabled", false);
         $("#nR").focus();
       }
@@ -46,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //ADD AN ALERT IF SOME CARDS ARE FLIPPED OR SUCCESS IS  MORE THAN 0 AND LESS THAN 16
     //IF NO DON'T
     //IF "YES" DO
-    $("#msg").text("Click the cards!");//print message
+    uiElements.message.textContent = "Click the cards!";//print message
     roundsCnt = 0;//reset round counter
 
     $("#rndCnt").text("Number of rounds: ");//print message
@@ -110,6 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  $("#nG").click(newGame); //bind newGame to button
-  $("#nR").click(nextRound); //bind nextRound to button
+  uiElements.newGame.addEventListener('click', newGame); //bind newGame to button
+  uiElements.nextRound.addEventListener('click', nextRound); //bind nextRound to button
 });
