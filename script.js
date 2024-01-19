@@ -106,21 +106,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   //to initialize next round
   function nextRound() {
-    $(".flipIt").removeClass("flipIt");//flip back the cards
-    $(".success").removeClass("flip");
+    uiElements.flippedCards.forEach((card) => card.classList.remove('flipIt'));
+    document.querySelectorAll('.success').forEach((card) => card.classList.remove('flip'));
     updateMessage(" ");//remove message
-    $("#nR").prop("disabled", true);//disable the button
-    roundsCnt++;//iterate round count
-    $("#rndCnt").text("Number of rounds: " + roundsCnt);//print number of round
-    var numberOfWin = $(".success").length;
+    uiElements.nextRound.setAttribute('disabled');
+    roundsCnt++;//increment round count
+    uiElements.roundCount.textContent = `Number of rounds: ${roundsCnt}`;
+    var numberOfWin = document.querySelectorAll('.success').length;
     if (numberOfWin == 16) {
-      $(".card").removeClass("flip");
-      $("#nR").prop("disabled", true);
+      uiElements.cards.forEach((card) => card.classList.remove('flip'));
+      uiElements.nextRound.setAttribute('disabled');
       updateMessage("START NEW GAME?");
     }
     else {
-      clickableCards = $(".flip");
-      clickableCards.click(checkCard); //bind checkCard to clicking a card
+      clickableCards = document.querySelectorAll(".flip");
+      clickableCards.forEach((card) => card.addEventListener('click', checkCard)); //bind checkCard to clicking a card
     }
   }
 
