@@ -5,14 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
     flippedCards: document.querySelectorAll('.flipIt'),
     message: document.getElementById('msg'),
     roundCount: document.getElementById('rndCnt'),
+    cards: document.querySelectorAll('.card'),
 
   }
   
-  //intialize counter for number of turns
-  var roundsCnt = 0;
-  //get all clickable cards
-  var clickableCards = document.querySelectorAll(".flip");
-
+  let roundsCnt = 0;
+  let clickableCards = document.querySelectorAll(".flip");
+  
+  function enableAndFocusNextRound() {
+    uiElements.nextRound.removeAttribute('disabled');
+    uiElements.nextRound.focus();
+  }
   //flip card triggered when clicked
   function checkCard() {
     var numFlipped = document.querySelectorAll(".flipIt").length; //check how many cards are flipped
@@ -21,27 +24,25 @@ document.addEventListener('DOMContentLoaded', () => {
       numFlipped = document.querySelectorAll(".flipIt").length; //check how many cards are flipped
     }
     if (numFlipped == 2) {//when 2 or more are flipped:
-      $(".card").removeClass("flip");//make them not flippable
-      var flippedCards = $(".flipIt");//get the flipped cards
-      var allFlipped = $(".flipIt img");//get the imgs on the flipped cards
+      uiElements.cards.forEach((card) => card.classList.remove('flip'));//make them not flippable
+      let flippedCards = document.querySelectorAll('.flipIt');//get the flipped cards
+      var allFlipped = document.querySelectorAll('.flipIt img');//get the imgs on the flipped cards
       var arrImgs = Array.from(allFlipped);//make it an array
       var src1 = arrImgs[0].attributes.src.value;//get src value
       var src2 = arrImgs[1].attributes.src.value;//get src value
-      clickableCards = $(".flip");
+      clickableCards = document.querySelectorAll('.flip');
 
       if (src1 == src2) {//do the src match on flipped cards?
         //if so then add .success and remove flipIt class on flipped cards
-        document.getElementById("msg").textContent = "Success!";
-        flippedCards.addClass("success");
-        flippedCards.removeClass("flip");
-        $("#nR").attr("disabled", false);
-        $("#nR").focus();
+        uiElements.message.textContent = "Success!";
+        flippedCards.classList.add('success');
+        flippedCards.classList.remove('flip');
+        enableAndFocusNextRound();
       }
       else {//otherwise womp womp!
         //print msg and activate next round button
         uiElements.message.textContent = "Try again!";
-        $("#nR").prop("disabled", false);
-        $("#nR").focus();
+        enableAndFocusNextRound();
       }
     }
     else {
@@ -55,11 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
     //ADD AN ALERT IF SOME CARDS ARE FLIPPED OR SUCCESS IS  MORE THAN 0 AND LESS THAN 16
     //IF NO DON'T
     //IF "YES" DO
-    uiElements.message.textContent = "Click the cards!";//print message
-    roundsCnt = 0;//reset round counter
+    uiElements.message.textContent = "Click the cards!";
+    roundsCnt = 0;
 
-    $("#rndCnt").text("Number of rounds: ");//print message
-    $(".card").removeClass("flipIt success");//remove classes from previous game if any
+    uiElements.roundCount.textContent = "Number of rounds: ";
+    uiElements.cards.forEach((card) => card.classList.remove('flipIt', 'success'));
+    //remove classes from previous game if any
     //$(".card").addClass("flip");
     //Array holding all image urls twice
     var myPix = ["assets/1.jpg",
@@ -88,15 +90,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //run through all imgs and assign a src with getImage function
     function assignImgs() {
-      for (i = 0; i < 16; i++) {
-        var currentID = "#" + i;
-        var currentImg = "img" + currentID;
-        var img = $(currentImg);
-        img.attr('src', getImage());
+      for (i = 1; i < 16; i++) {
+        var currentID = i;
+        console.log(currentID);
+        var img = document.getElementById(currentID);
+    
+        img.setAttribute('src', getImage());
       }
     }
     assignImgs();
-    clickableCards.click(checkCard); //bind checkCard to clicking a card
+    clickableCards.forEach((card) => card.addEventListener('click', checkCard)); //bind checkCard to clicking a card
   }
   //to initialize next round
   function nextRound() {
