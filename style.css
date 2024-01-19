@@ -3,6 +3,7 @@ html {
 }
 
 #root {
+  font-family: Consolas, monospace;
   background: #ecf4f3;
   height: 100%;
   padding-top: 0.5em;
@@ -10,7 +11,7 @@ html {
 
 #info {
   text-align: center;
-  background: #555151;
+  background: #222222;
   color: #ecf4f3;
   width: 20em;
   padding: 0.3em;
@@ -29,6 +30,7 @@ html {
 }
 
 button {
+  font-family: Consolas, monospace;
   font-weight: 700;
   margin-right: 0.5em;
 }
@@ -57,12 +59,12 @@ p#msg {
   margin: 2em auto;
   width: 565px;
   height: 565px;
-  background-color: #555151;
+  background-color: #222222;
   margin-top: 0.5em;
 }
 
 .front {
-  background: #76dbd1;
+  background: #ecf4f3;
   width: 120px;
   height: 120px;
   -webkit-backface-visibility: hidden;
@@ -94,5 +96,5 @@ p#msg {
 }
 
 .success .front{
-  background: #51968F;
+  background: #888888;
 }
