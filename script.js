@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     message: document.getElementById('msg'),
     roundCount: document.getElementById('rndCnt'),
     cards: document.querySelectorAll('.card'),
-
   }
   
   let roundsCnt = 0;
@@ -15,6 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function enableAndFocusNextRound() {
     uiElements.nextRound.removeAttribute('disabled');
     uiElements.nextRound.focus();
+  }
+
+  function updateMessage(message) {
+    uiElements.message.textContent = message;
   }
   //flip card triggered when clicked
   function checkCard() {
@@ -34,14 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (src1 == src2) {//do the src match on flipped cards?
         //if so then add .success and remove flipIt class on flipped cards
-        uiElements.message.textContent = "Success!";
-        flippedCards.classList.add('success');
-        flippedCards.classList.remove('flip');
+        updateMessage("Success!");
+        flippedCards.forEach((card) => card.classList.add('success'));
+        flippedCards.forEach((card) => card.classList.remove('flip'));
         enableAndFocusNextRound();
       }
       else {//otherwise womp womp!
         //print msg and activate next round button
-        uiElements.message.textContent = "Try again!";
+        updateMessage("Try again!");
         enableAndFocusNextRound();
       }
     }
@@ -56,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //ADD AN ALERT IF SOME CARDS ARE FLIPPED OR SUCCESS IS  MORE THAN 0 AND LESS THAN 16
     //IF NO DON'T
     //IF "YES" DO
-    uiElements.message.textContent = "Click the cards!";
+    updateMessage("Click the cards!");
     roundsCnt = 0;
 
     uiElements.roundCount.textContent = "Number of rounds: ";
@@ -105,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function nextRound() {
     $(".flipIt").removeClass("flipIt");//flip back the cards
     $(".success").removeClass("flip");
-    $("#msg").text(" ");//remove message
+    updateMessage(" ");//remove message
     $("#nR").prop("disabled", true);//disable the button
     roundsCnt++;//iterate round count
     $("#rndCnt").text("Number of rounds: " + roundsCnt);//print number of round
@@ -113,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (numberOfWin == 16) {
       $(".card").removeClass("flip");
       $("#nR").prop("disabled", true);
-      $("#msg").text("START NEW GAME?");
+      updateMessage("START NEW GAME?");
     }
     else {
       clickableCards = $(".flip");
