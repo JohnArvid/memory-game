@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     roundCount: document.getElementById('rndCnt'),
     cards: document.querySelectorAll('.card'),
   }
+
+  const flipBackCards = () => document.querySelectorAll('.flipIt').forEach((card) => card.classList.remove('flipIt'));
   
   let roundsCnt = 0;
   let clickableCards = document.querySelectorAll(".flip");
@@ -93,9 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //run through all imgs and assign a src with getImage function
     function assignImgs() {
-      for (i = 1; i < 16; i++) {
+      for (i = 1; i < 17; i++) {
         var currentID = i;
-        console.log(currentID);
         var img = document.getElementById(currentID);
     
         img.setAttribute('src', getImage());
@@ -106,16 +107,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   //to initialize next round
   function nextRound() {
-    uiElements.flippedCards.forEach((card) => card.classList.remove('flipIt'));
+    flipBackCards();
     document.querySelectorAll('.success').forEach((card) => card.classList.remove('flip'));
     updateMessage(" ");//remove message
-    uiElements.nextRound.setAttribute('disabled');
+    uiElements.nextRound.setAttribute('disabled', true);
     roundsCnt++;//increment round count
     uiElements.roundCount.textContent = `Number of rounds: ${roundsCnt}`;
     var numberOfWin = document.querySelectorAll('.success').length;
     if (numberOfWin == 16) {
       uiElements.cards.forEach((card) => card.classList.remove('flip'));
-      uiElements.nextRound.setAttribute('disabled');
+      uiElements.nextRound.setAttribute('disabled', true);
       updateMessage("START NEW GAME?");
     }
     else {
