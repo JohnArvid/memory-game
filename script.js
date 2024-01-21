@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  'use strict'
   const uiElements = {
     newGame: document.getElementById('nG'),
     nextRound: document.getElementById('nR'),
@@ -66,10 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     uiElements.roundCount.textContent = "Number of rounds: ";
     uiElements.cards.forEach((card) => card.classList.remove('flipIt', 'success'));
-    //remove classes from previous game if any
-    //$(".card").addClass("flip");
-    //Array holding all image urls twice
-    var myPix = ["assets/1.jpg",
+
+    const myPix = ["assets/1.jpg",
       "assets/2.jpg",
       "assets/3.jpg",
       "assets/4.jpg",
@@ -85,19 +84,19 @@ document.addEventListener('DOMContentLoaded', () => {
       "assets/6.jpg",
       "assets/7.jpg",
       "assets/8.jpg"];
-    var imgSources = myPix;
+    let imgSources = myPix;
     //to ensure each picture only gets chosen twice
     function getImage() {
-      var rand = Math.floor(Math.random() * imgSources.length);
-      var str = imgSources[rand];
+      let rand = Math.floor(Math.random() * imgSources.length);
+      let str = imgSources[rand];
       imgSources.splice(rand, 1);
       return str;
     }
     //run through all imgs and assign a src with getImage function
     function assignImgs() {
       for (i = 1; i < 17; i++) {
-        var currentID = i;
-        var img = document.getElementById(currentID);
+        let currentID = i;
+        let img = document.getElementById(currentID);
     
         img.setAttribute('src', getImage());
       }
