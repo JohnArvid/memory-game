@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   'use strict'
-  const uiElements = {
+  const ui = {
     newGame: document.getElementById('nG'),
     nextRound: document.getElementById('nR'),
+    flippedCards: document.querySelectorAll('.flipIt'),
     message: document.getElementById('msg'),
     roundCount: document.getElementById('rndCnt'),
     cards: document.querySelectorAll('.card'),
@@ -14,12 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
   let clickableCards = document.querySelectorAll(".flip");
   
   function enableAndFocusNextRound() {
-    uiElements.nextRound.removeAttribute('disabled');
-    uiElements.nextRound.focus();
+    ui.nextRound.removeAttribute('disabled');
+    ui.nextRound.focus();
   }
 
   function updateMessage(message) {
-    uiElements.message.textContent = message;
+    ui.message.textContent = message;
   }
   //flip card triggered when clicked
   function checkCard() {
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       numFlipped = document.querySelectorAll(".flipIt").length; //check how many cards are flipped
     }
     if (numFlipped == 2) {//when 2 or more are flipped:
-      uiElements.cards.forEach((card) => card.classList.remove('flip'));//make them not flippable
+      ui.cards.forEach((card) => card.classList.remove('flip'));//make them not flippable
       let flippedCards = document.querySelectorAll('.flipIt');//get the flipped cards
       var allFlipped = document.querySelectorAll('.flipIt img');//get the imgs on the flipped cards
       var arrImgs = Array.from(allFlipped);//make it an array
@@ -64,8 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
     updateMessage("Click the cards!");
     roundsCnt = 0;
 
-    uiElements.roundCount.textContent = "Number of rounds: ";
-    uiElements.cards.forEach((card) => card.classList.remove('flipIt', 'success'));
+    ui.roundCount.textContent = "Number of rounds: ";
+    ui.cards.forEach((card) => card.classList.remove('flipIt', 'success'));
 
     const myPix = ["assets/1.jpg",
       "assets/2.jpg",
@@ -108,13 +109,13 @@ document.addEventListener('DOMContentLoaded', () => {
     flipBackCards();
     document.querySelectorAll('.success').forEach((card) => card.classList.remove('flip'));
     updateMessage(" ");//remove message
-    uiElements.nextRound.setAttribute('disabled', true);
+    ui.nextRound.setAttribute('disabled', true);
     roundsCnt++;//increment round count
-    uiElements.roundCount.textContent = `Number of rounds: ${roundsCnt}`;
+    ui.roundCount.textContent = `Number of rounds: ${roundsCnt}`;
     var numberOfWin = document.querySelectorAll('.success').length;
     if (numberOfWin == 16) {
-      uiElements.cards.forEach((card) => card.classList.remove('flip'));
-      uiElements.nextRound.setAttribute('disabled', true);
+      ui.cards.forEach((card) => card.classList.remove('flip'));
+      ui.nextRound.setAttribute('disabled', true);
       updateMessage("START NEW GAME?");
     }
     else {
@@ -124,6 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  uiElements.newGame.addEventListener('click', newGame); //bind newGame to button
-  uiElements.nextRound.addEventListener('click', nextRound); //bind nextRound to button
+  ui.newGame.addEventListener('click', newGame); //bind newGame to button
+  ui.nextRound.addEventListener('click', nextRound); //bind nextRound to button
 });
