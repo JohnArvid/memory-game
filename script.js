@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     roundCount: document.getElementById('rndCnt'),
     cards: document.querySelectorAll('.card'),
     flippedCards: () => document.querySelectorAll('.flipIt'),
-    clickableCards: () => document.querySelectorAll(".flip")
+    clickableCards: () => document.querySelectorAll(".flip"),
+    successCards: () => document.querySelectorAll('.success'),
   }
 
   const flipBackCards = () => {
@@ -32,45 +33,44 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateMessage(message) {
     ui.message.textContent = message;
   }
-  //flip card triggered when clicked
-  function checkCard() {
-    //check how many cards are flipped
-    let numFlipped = ui.flippedCards().length; 
-    if (numFlipped < 2) {
-      this.classList.add("flipIt");
-      numFlipped = ui.flippedCards().length; //check how many cards are flipped
-    }
-    if (numFlipped == 2) {//when 2 or more are flipped:
-      ui.cards.forEach((card) => card.classList.remove('flip'));//make them not flippable
-      // let flippedCards = document.querySelectorAll('.flipIt');//get the flipped cards
-      let allFlipped = document.querySelectorAll('.flipIt img');//get the imgs on the flipped cards
-      let arrImgs = Array.from(allFlipped);//make it an array
-      let src1 = arrImgs[0].attributes.src.value;//get src value
-      let src2 = arrImgs[1].attributes.src.value;//get src value
-      // clickableCards = document.querySelectorAll('.flip');
 
-      if (src1 == src2) {//do the src match on flipped cards?
-        //if so then add .success and remove flipIt class on flipped cards
-        updateMessage("Success!");
-        ui.flippedCards().forEach((card) => card.classList.add('success'));
-        ui.flippedCards().forEach((card) => card.classList.remove('flip'));
-        enableAndFocusNextRound();
+  function checkCard(e) {
+    if (e.target.parentElement.classList.contains('flip')){
+      let numFlipped = ui.flippedCards().length; 
+      if (numFlipped < 2) {
+        e.target.parentElement.classList.add('flipIt');
+        numFlipped = ui.flippedCards().length;
       }
-      else {//otherwise womp womp!
-        //print msg and activate next round button
-        updateMessage("Try again!");
-        enableAndFocusNextRound();
+      if (numFlipped == 2) {
+        // make cards not flippable
+        // ui.cards.forEach((card) => card.classList.remove('flip'));
+        for (let card in ui.cards.values) {
+          // console.log(card);
+          card.classList.remove('flip');
+        }
+        let allFlipped = document.querySelectorAll('.flipIt img');
+        let arrImgs = Array.from(allFlipped);
+        let src1 = arrImgs[0].attributes.src.value;
+        let src2 = arrImgs[1].attributes.src.value;
+
+        if (src1 == src2) {
+          updateMessage("Success!");
+          ui.flippedCards().forEach((card) => card.classList.add('success'));
+          ui.flippedCards().forEach((card) => card.classList.remove('flip'));
+          enableAndFocusNextRound();
+        }
+        else {
+          updateMessage("Try again!");
+          enableAndFocusNextRound();
+        }
       }
-    }
-    else {
-      //if only one card is flipped, do nothing, wait for next card to be flipped
     }
   };
 
 
   //to reset the game and assign new imgs
   function newGame() {
-    //ADD AN ALERT IF SOME CARDS ARE FLIPPED OR SUCCESS IS  MORE THAN 0 AND LESS THAN 16
+    //ADD AN ALERT IF SOME CARDS ARE FLIPPED OR SUCCESS IS MORE THAN 0 AND LESS THAN 16
     //IF NO DON'T
     //IF "YES" DO
     updateMessage("Click the cards!");
@@ -97,12 +97,14 @@ document.addEventListener('DOMContentLoaded', () => {
       "assets/8.jpg"];
     let imgSources = myPix;
     //to ensure each picture only gets chosen twice
+
     function getImage() {
       let rand = Math.floor(Math.random() * imgSources.length);
       let str = imgSources[rand];
       imgSources.splice(rand, 1);
       return str;
     }
+
     //run through all imgs and assign a src with getImage function
     function assignImgs() {
       for (let i = 1; i < 17; i++) {
@@ -112,33 +114,38 @@ document.addEventListener('DOMContentLoaded', () => {
         img.setAttribute('src', getImage());
       }
     }
+
     assignImgs();
-    ui.clickableCards().forEach((card) => card.addEventListener('click', checkCard)); //bind checkCard to clicking a card
+    ui.gameGrid.addEventListener('click', checkCard);
     ui.gameGrid.classList.remove('empty');
     ui.gameGrid.classList.add('active');
 
   }
+
   //to initialize next round
   function nextRound() {
     flipBackCards();
-    document.querySelectorAll('.success').forEach((card) => card.classList.remove('flip'));
-    updateMessage(" ");//remove message
+
+    for (let card in ui.successCards().values) {
+      card.classlist.remove('flip');
+    }
+    
+    updateMessage(" ");
     ui.nextRound.setAttribute('disabled', true);
     roundCounter.increment();
     ui.roundCount.textContent = `Number of rounds: ${roundCounter.numberOfRounds}`;
-    let numberOfWin = document.querySelectorAll('.success').length;
-    if (numberOfWin == 16) {
+    if (ui.successCards.length == 16) {
       ui.cards.forEach((card) => card.classList.remove('flip'));
       ui.nextRound.setAttribute('disabled', true);
       updateMessage("START NEW GAME?");
     }
     else {
-      // clickableCards = document.querySelectorAll(".flip");
-      ui.clickableCards().forEach((card) => card.addEventListener('click', checkCard)); //bind checkCard to clicking a card
+      ui.gameGrid.addEventListener('click', checkCard);
+      // ui.clickableCards().forEach((card) => card.addEventListener('click', checkCard)); //bind checkCard to clicking a card
     }
   }
 
-
+  ui.gameGrid.addEventListener('click', checkCard);
   ui.newGame.addEventListener('click', newGame); //bind newGame to button
   ui.nextRound.addEventListener('click', nextRound); //bind nextRound to button
 });
