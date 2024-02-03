@@ -110,23 +110,41 @@ document.addEventListener('DOMContentLoaded', () => {
       "assets/8.jpg"];
     let imgSources = myPix;
 
-    function getImage() {
-      let rand = Math.floor(Math.random() * imgSources.length);
-      let str = imgSources[rand];
-      imgSources.splice(rand, 1);
+    // function getImage() {
+    //   let rand = Math.floor(Math.random() * imgSources.length);
+    //   let str = imgSources[rand];
+    //   imgSources.splice(rand, 1);
+    //   return str;
+    // }
+
+    function getIcon() {
+      let rand = Math.floor(Math.random() * iconArr.length);
+      let str = iconArr[rand];
+      iconArr.splice(rand, 1);
       return str;
     }
 
-    function assignImgs() {
+    // function assignImgs() {
+    //   for (let i = 1; i < 17; i++) {
+    //     let currentID = i;
+    //     let img = document.getElementById(currentID);
+    
+    //     img.setAttribute('src', getImage());
+    //   }
+    // }
+
+    function assignIcons() {
       for (let i = 1; i < 17; i++) {
         let currentID = i;
-        let img = document.getElementById(currentID);
+        let iconWrapper = document.getElementById(currentID);
     
-        img.setAttribute('src', getImage());
+        iconWrapper.classList.add(getIcon());
       }
     }
 
-    assignImgs();
+    // assignImgs();
+    assignIcons();
+
     // End of assigning images
 
     ui.gameGrid.addEventListener('click', checkCard);
