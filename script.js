@@ -7,9 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     message: document.getElementById('msg'),
     roundCount: document.getElementById('rndCnt'),
     cards: document.querySelectorAll('.card'),
+    flippedCards: () => document.querySelectorAll('.flipIt'),
+    clickableCards: () => document.querySelectorAll(".flip")
   }
 
-  const flipBackCards = () => document.querySelectorAll('.flipIt').forEach((card) => card.classList.remove('flipIt'));
+  const flipBackCards = () => {
+    ui.flippedCards().forEach((card) => card.classList.remove('flipIt'))};
   
   let roundsCnt = 0;
   let clickableCards = document.querySelectorAll(".flip");
@@ -24,25 +27,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   //flip card triggered when clicked
   function checkCard() {
-    var numFlipped = document.querySelectorAll(".flipIt").length; //check how many cards are flipped
-    if (numFlipped < 2) {//if they are less than 2
-      this.classList.add("flipIt"); //flip the clicked card
-      numFlipped = document.querySelectorAll(".flipIt").length; //check how many cards are flipped
+    //check how many cards are flipped
+    let numFlipped = ui.flippedCards().length; 
+    if (numFlipped < 2) {
+      this.classList.add("flipIt");
+      numFlipped = ui.flippedCards().length; //check how many cards are flipped
     }
     if (numFlipped == 2) {//when 2 or more are flipped:
       ui.cards.forEach((card) => card.classList.remove('flip'));//make them not flippable
-      let flippedCards = document.querySelectorAll('.flipIt');//get the flipped cards
-      var allFlipped = document.querySelectorAll('.flipIt img');//get the imgs on the flipped cards
-      var arrImgs = Array.from(allFlipped);//make it an array
-      var src1 = arrImgs[0].attributes.src.value;//get src value
-      var src2 = arrImgs[1].attributes.src.value;//get src value
-      clickableCards = document.querySelectorAll('.flip');
+      // let flippedCards = document.querySelectorAll('.flipIt');//get the flipped cards
+      let allFlipped = document.querySelectorAll('.flipIt img');//get the imgs on the flipped cards
+      let arrImgs = Array.from(allFlipped);//make it an array
+      let src1 = arrImgs[0].attributes.src.value;//get src value
+      let src2 = arrImgs[1].attributes.src.value;//get src value
+      // clickableCards = document.querySelectorAll('.flip');
 
       if (src1 == src2) {//do the src match on flipped cards?
         //if so then add .success and remove flipIt class on flipped cards
         updateMessage("Success!");
-        flippedCards.forEach((card) => card.classList.add('success'));
-        flippedCards.forEach((card) => card.classList.remove('flip'));
+        ui.flippedCards().forEach((card) => card.classList.add('success'));
+        ui.flippedCards().forEach((card) => card.classList.remove('flip'));
         enableAndFocusNextRound();
       }
       else {//otherwise womp womp!
@@ -102,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     assignImgs();
-    clickableCards.forEach((card) => card.addEventListener('click', checkCard)); //bind checkCard to clicking a card
+    ui.clickableCards().forEach((card) => card.addEventListener('click', checkCard)); //bind checkCard to clicking a card
     ui.gameGrid.classList.remove('empty');
     ui.gameGrid.classList.add('active');
 
@@ -115,15 +119,15 @@ document.addEventListener('DOMContentLoaded', () => {
     ui.nextRound.setAttribute('disabled', true);
     roundsCnt++;//increment round count
     ui.roundCount.textContent = `Number of rounds: ${roundsCnt}`;
-    var numberOfWin = document.querySelectorAll('.success').length;
+    let numberOfWin = document.querySelectorAll('.success').length;
     if (numberOfWin == 16) {
       ui.cards.forEach((card) => card.classList.remove('flip'));
       ui.nextRound.setAttribute('disabled', true);
       updateMessage("START NEW GAME?");
     }
     else {
-      clickableCards = document.querySelectorAll(".flip");
-      clickableCards.forEach((card) => card.addEventListener('click', checkCard)); //bind checkCard to clicking a card
+      // clickableCards = document.querySelectorAll(".flip");
+      ui.clickableCards().forEach((card) => card.addEventListener('click', checkCard)); //bind checkCard to clicking a card
     }
   }
 
