@@ -86,7 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
       'fa-brands fa-square-js',
       'fa-solid fa-clone',
       'fa-solid fa-yin-yang',
+      // Expand list
     ];
+
+    // Build randomizer to pick 8 from icons
+    // Save in new arr that is copied and doubled in iconArr
 
     const iconArr = [...icons, ...icons];
 
