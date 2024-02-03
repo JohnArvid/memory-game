@@ -88,8 +88,10 @@ p#msg {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
   position: absolute;
-  top: 16px;
-  left: 0;
+  top: 40px;
+  left: 40px;
+  color: #ecf4f3;
+  font-size: x-large;
 }
 
 .flipIt {

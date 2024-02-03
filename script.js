@@ -46,12 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let card in ui.cards.values) {
           card.classList.remove('flip');
         }
-        let allFlipped = document.querySelectorAll('.flipIt img');
-        let arrImgs = Array.from(allFlipped);
-        let src1 = arrImgs[0].attributes.src.value;
-        let src2 = arrImgs[1].attributes.src.value;
-
-        if (src1 == src2) {
+        let allFlipped = document.querySelectorAll('.flipIt i');
+        let arrIs = Array.from(allFlipped);
+        
+        let icon1 = arrIs[0].className;
+        let icon2 = arrIs[1].className;
+        if (icon1 === icon2) {
           updateMessage("Success!");
           ui.flippedCards().forEach((card) => card.classList.add('success'));
           ui.flippedCards().forEach((card) => card.classList.remove('flip'));
@@ -78,14 +78,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Start of image assigning
     const icons = [
-      'fa-brain', 
-      'fa-marker',
-      'fa-walkie-talkie',
-      'fa-square-xmark',
-      'fa-react',
-      'fa-square-js',
-      'fa-clone',
-      'fa-yin-yang',
+      'fa-solid fa-brain', 
+      'fa-solid fa-marker',
+      'fa-solid fa-walkie-talkie',
+      'fa-solid fa-square-xmark',
+      'fa-brands fa-react',
+      'fa-brands fa-square-js',
+      'fa-solid fa-clone',
+      'fa-solid fa-yin-yang',
     ];
 
     const iconArr = [...icons, ...icons];
