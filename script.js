@@ -108,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
           console.log(iconNames[icon]);
           iconWrapper.classList.add(iconNames[icon]);
         }
-    
       }
     }
 
