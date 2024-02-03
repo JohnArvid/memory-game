@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     gameGrid: document.getElementById('game-grid'),
     newGame: document.getElementById('nG'),
     nextRound: document.getElementById('nR'),
-    flippedCards: document.querySelectorAll('.flipIt'),
     message: document.getElementById('msg'),
     roundCount: document.getElementById('rndCnt'),
     cards: document.querySelectorAll('.card'),
