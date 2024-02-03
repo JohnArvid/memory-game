@@ -90,33 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const iconArr = [...icons, ...icons];
 
-    // console.log(iconArr);
-
-    const myPix = ["assets/1.jpg",
-      "assets/2.jpg",
-      "assets/3.jpg",
-      "assets/4.jpg",
-      "assets/5.jpg",
-      "assets/6.jpg",
-      "assets/7.jpg",
-      "assets/8.jpg",
-      "assets/1.jpg",
-      "assets/2.jpg",
-      "assets/3.jpg",
-      "assets/4.jpg",
-      "assets/5.jpg",
-      "assets/6.jpg",
-      "assets/7.jpg",
-      "assets/8.jpg"];
-    let imgSources = myPix;
-
-    // function getImage() {
-    //   let rand = Math.floor(Math.random() * imgSources.length);
-    //   let str = imgSources[rand];
-    //   imgSources.splice(rand, 1);
-    //   return str;
-    // }
-
     function getIcon() {
       let rand = Math.floor(Math.random() * iconArr.length);
       let str = iconArr[rand];
@@ -124,25 +97,21 @@ document.addEventListener('DOMContentLoaded', () => {
       return str;
     }
 
-    // function assignImgs() {
-    //   for (let i = 1; i < 17; i++) {
-    //     let currentID = i;
-    //     let img = document.getElementById(currentID);
-    
-    //     img.setAttribute('src', getImage());
-    //   }
-    // }
-
     function assignIcons() {
       for (let i = 1; i < 17; i++) {
         let currentID = i;
         let iconWrapper = document.getElementById(currentID);
+        let iconNames = getIcon().split(' ');
+        debugger;
+        for (let icon in iconNames) {
+          debugger;
+          console.log(iconNames[icon]);
+          iconWrapper.classList.add(iconNames[icon]);
+        }
     
-        iconWrapper.classList.add(getIcon());
       }
     }
 
-    // assignImgs();
     assignIcons();
 
     // End of assigning images
