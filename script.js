@@ -76,8 +76,22 @@ document.addEventListener('DOMContentLoaded', () => {
     ui.roundCount.textContent = "Number of rounds: ";
     ui.cards.forEach((card) => card.classList.remove('flipIt', 'success'));
 
-
     // Start of image assigning
+    const icons = [
+      'fa-brain', 
+      'fa-marker',
+      'fa-walkie-talkie',
+      'fa-square-xmark',
+      'fa-react',
+      'fa-square-js',
+      'fa-clone',
+      'fa-yin-yang',
+    ];
+
+    const iconArr = [...icons, ...icons];
+
+    // console.log(iconArr);
+
     const myPix = ["assets/1.jpg",
       "assets/2.jpg",
       "assets/3.jpg",
@@ -103,7 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return str;
     }
 
-    //run through all imgs and assign a src with getImage function
     function assignImgs() {
       for (let i = 1; i < 17; i++) {
         let currentID = i;
@@ -114,6 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     assignImgs();
+    // End of assigning images
+
     ui.gameGrid.addEventListener('click', checkCard);
     ui.gameGrid.classList.remove('empty');
     ui.gameGrid.classList.add('active');
