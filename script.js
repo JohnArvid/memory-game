@@ -43,9 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (numFlipped == 2) {
         // make cards not flippable
-        // ui.cards.forEach((card) => card.classList.remove('flip'));
         for (let card in ui.cards.values) {
-          // console.log(card);
           card.classList.remove('flip');
         }
         let allFlipped = document.querySelectorAll('.flipIt img');
@@ -68,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
 
-  //to reset the game and assign new imgs
   function newGame() {
     //ADD AN ALERT IF SOME CARDS ARE FLIPPED OR SUCCESS IS MORE THAN 0 AND LESS THAN 16
     //IF NO DON'T
@@ -79,6 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ui.roundCount.textContent = "Number of rounds: ";
     ui.cards.forEach((card) => card.classList.remove('flipIt', 'success'));
 
+
+    // Start of image assigning
     const myPix = ["assets/1.jpg",
       "assets/2.jpg",
       "assets/3.jpg",
@@ -96,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
       "assets/7.jpg",
       "assets/8.jpg"];
     let imgSources = myPix;
-    //to ensure each picture only gets chosen twice
 
     function getImage() {
       let rand = Math.floor(Math.random() * imgSources.length);
