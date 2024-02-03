@@ -14,8 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const flipBackCards = () => {
     ui.flippedCards().forEach((card) => card.classList.remove('flipIt'))};
   
-  let roundsCnt = 0;
-  let clickableCards = document.querySelectorAll(".flip");
+  const roundCounter = {
+    numberOfRounds: 0, 
+    increment: function(){
+      this.numberOfRounds += 1;
+    },
+    reset: function(){
+      this.numberOfRounds = 0;
+    }
+   };
   
   function enableAndFocusNextRound() {
     ui.nextRound.removeAttribute('disabled');
@@ -67,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //IF NO DON'T
     //IF "YES" DO
     updateMessage("Click the cards!");
-    roundsCnt = 0;
+    roundCounter.reset();
 
     ui.roundCount.textContent = "Number of rounds: ";
     ui.cards.forEach((card) => card.classList.remove('flipIt', 'success'));
@@ -117,8 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.success').forEach((card) => card.classList.remove('flip'));
     updateMessage(" ");//remove message
     ui.nextRound.setAttribute('disabled', true);
-    roundsCnt++;//increment round count
-    ui.roundCount.textContent = `Number of rounds: ${roundsCnt}`;
+    roundCounter.increment();
+    ui.roundCount.textContent = `Number of rounds: ${roundCounter.numberOfRounds}`;
     let numberOfWin = document.querySelectorAll('.success').length;
     if (numberOfWin == 16) {
       ui.cards.forEach((card) => card.classList.remove('flip'));
