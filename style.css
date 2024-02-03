@@ -101,6 +101,6 @@ p#msg {
 
 }
 
-.success .front{
+#game-grid.active .success .front{
   background: #888888;
 }
