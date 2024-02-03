@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   'use strict'
   const ui = {
+    gameGrid: document.getElementById('game-grid'),
     newGame: document.getElementById('nG'),
     nextRound: document.getElementById('nR'),
     flippedCards: document.querySelectorAll('.flipIt'),
@@ -94,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //run through all imgs and assign a src with getImage function
     function assignImgs() {
-      for (i = 1; i < 17; i++) {
+      for (let i = 1; i < 17; i++) {
         let currentID = i;
         let img = document.getElementById(currentID);
     
@@ -103,6 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     assignImgs();
     clickableCards.forEach((card) => card.addEventListener('click', checkCard)); //bind checkCard to clicking a card
+    ui.gameGrid.classList.remove('empty');
+    ui.gameGrid.classList.add('active');
+
   }
   //to initialize next round
   function nextRound() {
