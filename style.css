@@ -1,10 +1,11 @@
-html {
-  background: #ecf4f3;
+
+body {
+  background-color: #222222;
 }
 
 #root {
   font-family: Consolas, monospace;
-  background: #ecf4f3;
+  /* background: #ecf4f3; */
   height: 100%;
   padding-top: 0.5em;
 }
@@ -16,6 +17,7 @@ html {
   width: 20em;
   padding: 0.3em;
   border-radius: 6px;
+  border: 1px solid #ecf4f3;
   font-size: 0.9em;
   margin: 0 auto;  
   display: block;
@@ -54,6 +56,7 @@ p#msg {
 }
 
 #game-grid {
+  border: 1px solid #ecf4f3;
   border-radius: 0.2em;
   padding: 10px;
   margin: 2em auto;
@@ -62,6 +65,7 @@ p#msg {
   background-color: #222222;
   margin-top: 0.5em;
 }
+
 #game-grid.empty .card .front {
   background-color: #222222;
 }
@@ -88,11 +92,20 @@ p#msg {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
   position: absolute;
-  top: 40px;
-  left: 40px;
+  top: 16px;
+  left: 0px;
   color: #ecf4f3;
   font-size: x-large;
+  border: 1px solid #ecf4f3;
 }
+i {
+  margin: 0 auto;
+  height: 4.8em;
+  width: 4.8em;
+  text-align: center;
+}
+
+
 
 .flipIt {
   -webkit-transform: rotateY(180deg);
@@ -105,4 +118,8 @@ p#msg {
 
 #game-grid.active .success .front{
   background: #888888;
+}
+
+.fa, .fa-brands, .fa-classic, .fa-regular, .fa-sharp, .fa-solid, .fab, .far, .fas {
+  line-height: 5;
 }
