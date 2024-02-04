@@ -43,9 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (numFlipped == 2) {
         // make cards not flippable
-        for (let card in ui.cards.values) {
-          card.classList.remove('flip');
-        }
+        // for (let card in ui.cards.values) {
+        //   card.classList.remove('flip');
+        // }
         let allFlipped = document.querySelectorAll('.flipIt i');
         let arrIs = Array.from(allFlipped);
         
@@ -62,6 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
           enableAndFocusNextRound();
         }
       }
+      // else if (numFlipped > 2){
+      //   nextRound();
+      //   checkCard();
+      // }
     }
   };
 
@@ -89,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Expand list
     ];
 
-    // Build randomizer to pick 8 from icons
+    // Build randomizer to pick n from icons
     // Save in new arr that is copied and doubled in iconArr
 
     const iconArr = [...icons, ...icons];
@@ -106,10 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentID = i;
         let iconWrapper = document.getElementById(currentID);
         let iconNames = getIcon().split(' ');
-        debugger;
         for (let icon in iconNames) {
-          debugger;
-          console.log(iconNames[icon]);
           iconWrapper.classList.add(iconNames[icon]);
         }
       }
