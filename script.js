@@ -34,18 +34,20 @@ document.addEventListener('DOMContentLoaded', () => {
     ui.message.textContent = message;
   }
 
+  function numFlipped() {
+    return ui.flippedCards().length;
+  }
+
+  function flipCard(e) {
+    e.target.parentElement.classList.add('flipIt');
+  }
+
   function checkCard(e) {
     if (e.target.parentElement.classList.contains('flip')){
-      let numFlipped = ui.flippedCards().length; 
-      if (numFlipped < 2) {
-        e.target.parentElement.classList.add('flipIt');
-        numFlipped = ui.flippedCards().length;
-      }
-      if (numFlipped == 2) {
-        // make cards not flippable
-        // for (let card in ui.cards.values) {
-        //   card.classList.remove('flip');
-        // }
+      flipCard(e);
+
+      if (numFlipped() == 2) {
+        
         let allFlipped = document.querySelectorAll('.flipIt i');
         let arrIs = Array.from(allFlipped);
         
@@ -54,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (icon1 === icon2) {
           updateMessage("Success!");
           ui.flippedCards().forEach((card) => card.classList.add('success'));
-          ui.flippedCards().forEach((card) => card.classList.remove('flip'));
+          // ui.flippedCards().forEach((card) => card.classList.remove('flip'));
           enableAndFocusNextRound();
         }
         else {
@@ -62,10 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
           enableAndFocusNextRound();
         }
       }
-      // else if (numFlipped > 2){
-      //   nextRound();
-      //   checkCard();
-      // }
+      else {
+        nextRound();
+        flipCard(e);
+      }
     }
   };
 
@@ -78,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     roundCounter.reset();
 
     ui.roundCount.textContent = "Number of rounds: ";
-    ui.cards.forEach((card) => card.classList.remove('flipIt', 'success'));
+    ui.cards.forEach((card) => card.className = 'flip card');
 
     // Start of image assigning
     const icons = [
