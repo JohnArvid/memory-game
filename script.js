@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const ui = {
     gameGrid: document.getElementById('game-grid'),
     newGame: document.getElementById('nG'),
-    nextRound: document.getElementById('nR'),
+    // nextRound: document.getElementById('nR'),
     message: document.getElementById('msg'),
     roundCount: document.getElementById('rndCnt'),
     cards: document.querySelectorAll('.card'),
@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
    };
   
   function enableAndFocusNextRound() {
-    ui.nextRound.removeAttribute('disabled');
-    ui.nextRound.focus();
+    // ui.nextRound.removeAttribute('disabled');
+    // ui.nextRound.focus();
   }
 
   function updateMessage(message) {
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (icon1 === icon2) {
           updateMessage("Success!");
           ui.flippedCards().forEach((card) => card.classList.add('success'));
-          // ui.flippedCards().forEach((card) => card.classList.remove('flip'));
+          ui.flippedCards().forEach((card) => card.classList.remove('flip'));
           enableAndFocusNextRound();
         }
         else {
@@ -137,21 +137,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     updateMessage(" ");
-    ui.nextRound.setAttribute('disabled', true);
+    // ui.nextRound.setAttribute('disabled', true);
     roundCounter.increment();
     ui.roundCount.textContent = `Number of rounds: ${roundCounter.numberOfRounds}`;
     if (ui.successCards.length == 16) {
       ui.cards.forEach((card) => card.classList.remove('flip'));
-      ui.nextRound.setAttribute('disabled', true);
+      // ui.nextRound.setAttribute('disabled', true);
       updateMessage("START NEW GAME?");
     }
     else {
       ui.gameGrid.addEventListener('click', checkCard);
-      // ui.clickableCards().forEach((card) => card.addEventListener('click', checkCard)); //bind checkCard to clicking a card
     }
   }
 
   ui.gameGrid.addEventListener('click', checkCard);
   ui.newGame.addEventListener('click', newGame); //bind newGame to button
-  ui.nextRound.addEventListener('click', nextRound); //bind nextRound to button
+  // ui.nextRound.addEventListener('click', nextRound); //bind nextRound to button
 });
