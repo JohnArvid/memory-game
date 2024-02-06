@@ -35,6 +35,11 @@ button {
   font-family: Consolas, monospace;
   font-weight: 700;
   margin-right: 0.5em;
+  color: #ecf4f3;
+  background: #222222;
+  border: 1px solid #ecf4f3;
+  border-radius: 2em;
+  padding: 2% 5%;
 }
 
 p#msg {
