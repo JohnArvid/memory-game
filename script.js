@@ -143,9 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
       ui.cards.forEach((card) => card.classList.remove('flip'));
       updateMessage("START NEW GAME?");
     }
-    else {
-      // ui.gameGrid.addEventListener('click', checkCard);
-    }
   }
 
   ui.gameGrid.addEventListener('click', checkCard);
