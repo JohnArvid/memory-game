@@ -7,9 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
     roundCount: document.getElementById('rndCnt'),
     cards: document.querySelectorAll('.card'),
     flippedCards: () => document.querySelectorAll('.flipIt'),
-    clickableCards: () => document.querySelectorAll(".flip"),
+    clickableCards: () => document.querySelectorAll('.flip'),
     successCards: () => document.querySelectorAll('.success'),
   };
+
+  const numberOfCards = 16;
 
   const roundCounter = {
     numberOfRounds: 0, 
@@ -52,6 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
           updateMessage("Success!");
           ui.flippedCards().forEach((card) => card.classList.add('success'));
           ui.flippedCards().forEach((card) => card.classList.remove('flip'));
+
+          console.log(ui.successCards().length);
+
+          if (ui.successCards().length == numberOfCards) {
+            setTimeout(nextRound, 2000);
+          }
         }
         else {
           updateMessage("Try again!");
@@ -132,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateMessage(" ");
     roundCounter.increment();
     ui.roundCount.textContent = `Number of rounds: ${roundCounter.numberOfRounds}`;
-    if (ui.successCards.length == 16) {
+    if (ui.successCards().length == 16) {
       ui.cards.forEach((card) => card.classList.remove('flip'));
       updateMessage("START NEW GAME?");
     }
