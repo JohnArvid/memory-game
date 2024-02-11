@@ -55,8 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
           ui.flippedCards().forEach((card) => card.classList.add('success'));
           ui.flippedCards().forEach((card) => card.classList.remove('flip'));
 
-          console.log(ui.successCards().length);
-
           if (ui.successCards().length == numberOfCards) {
             setTimeout(nextRound, 2000);
           }
@@ -97,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // Build randomizer to pick n from icons
+    // Maybe it's easier to do a FY-shuffle and pick the amount from start?
     // Save in new arr that is copied and doubled in iconArr
 
     const iconArr = [...icons, ...icons];
@@ -145,10 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
       updateMessage("START NEW GAME?");
     }
     else {
-      ui.gameGrid.addEventListener('click', checkCard);
+      // ui.gameGrid.addEventListener('click', checkCard);
     }
   }
 
   ui.gameGrid.addEventListener('click', checkCard);
-  ui.newGame.addEventListener('click', newGame); //bind newGame to button
+  ui.newGame.addEventListener('click', newGame); 
 });
