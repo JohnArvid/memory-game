@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ui.roundCount.textContent = "Number of rounds: ";
     ui.cards.forEach((card) => card.className = 'flip card');
 
-    // Start of image assigning
     const icons = [
       'fa-solid fa-brain', 
       'fa-solid fa-marker',
@@ -119,8 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     assignIcons();
-
-    // End of assigning images
 
     ui.gameGrid.addEventListener('click', checkCard);
     ui.gameGrid.classList.remove('empty');
