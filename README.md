@@ -1,7 +1,7 @@
 # memory-game
 An old memory game I wrote with jquery. Now refactored to vanilla js and a little cleaner look.
 
-##[Play it here](https://johnarvid.github.io/memory-game/)
+## [Play it here](https://johnarvid.github.io/memory-game/)
 
 Things to do
 - Fixed: Factor out functionality inte more modular functions.
