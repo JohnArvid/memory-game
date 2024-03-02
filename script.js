@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
       for (let i = 1; i < 17; i++) {
         let currentID = i;
         let iconWrapper = document.getElementById(currentID);
+        iconWrapper.className = '';
         let iconNames = getIcon().split(' ');
         for (let icon in iconNames) {
           iconWrapper.classList.add(iconNames[icon]);
