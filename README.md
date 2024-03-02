@@ -4,9 +4,9 @@ An old memory game I wrote with jquery. Now refactored to vanilla js and a littl
 ## [Play it here](https://johnarvid.github.io/memory-game/)
 
 ## Learnings
-Running into some interesting thing when factoring out jquery
-Working with font-awesom
-The power of making things more modular...
+- Running into some interesting thing when factoring out jquery
+- Working with font-awesome
+- The power of making things more modular...
 
 
 ### Things to do
