@@ -1,160 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://kit.fontawesome.com/7edd7b765d.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="style.css">
-  <title>Memory Game</title>
-</head>
-<body>
-  <div id="root">
-    <div id="info">
-      <p id="msg">Click "New game"</p>
-      <p id="rndCnt">Number of rounds:</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/7edd7b765d.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Memory Game</title>
+  </head>
+  <body>
+    <div id="root">
+      <div id="info">
+        <p id="msg">Click "New game"</p>
+        <p id="rndCnt">Number of rounds:</p>
+      </div>
+      <div id="btn-wrapper">
+        <button id="nG">New game</button>
+      </div>
+      <div id="game-grid" class="empty">
+        <div id="row1" class="row">
+          <div class="flip card">
+            <div class="front">
+              <p></p>
+            </div>
+            <div class="back">
+              <i id="1" class=""></i>
+            </div>
+          </div>
+          <div class="flip card">
+            <div class="front">
+              <p></p>
+            </div>
+            <div class="back">
+              <i id="2" class=""></i>
+            </div>
+          </div>
+          <div class="flip card">
+            <div class="front">
+              <p></p>
+            </div>
+            <div class="back">
+              <i id="3" class=""></i>
+            </div>
+          </div>
+          <div class="flip card">
+            <div class="front">
+              <p></p>
+            </div>
+            <div class="back">
+              <i id="4" class=""></i>
+            </div>
+          </div>
+        </div>
+        <div id="row2" class="row">
+          <div class="flip card">
+            <div class="front">
+              <p></p>
+            </div>
+            <div class="back">
+              <i id="5" class=""></i>
+            </div>
+          </div>
+          <div class="flip card">
+            <div class="front">
+              <p></p>
+            </div>
+            <div class="back">
+              <i id="6" class=""></i>
+            </div>
+          </div>
+          <div class="flip card">
+            <div class="front">
+              <p></p>
+            </div>
+            <div class="back">
+              <i id="7" class=""></i>
+            </div>
+          </div>
+          <div class="flip card">
+            <div class="front">
+              <p></p>
+            </div>
+            <div class="back">
+              <i id="8" class=""></i>
+            </div>
+          </div>
+        </div>
+        <div id="row3" class="row">
+          <div class="flip card">
+            <div class="front">
+              <p></p>
+            </div>
+            <div class="back">
+              <i id="9" class=""></i>
+            </div>
+          </div>
+          <div class="flip card">
+            <div class="front">
+              <p></p>
+            </div>
+            <div class="back">
+              <i id="10" class=""></i>
+            </div>
+          </div>
+          <div class="flip card">
+            <div class="front">
+              <p></p>
+            </div>
+            <div class="back">
+              <i id="11" class=""></i>
+            </div>
+          </div>
+          <div class="flip card">
+            <div class="front">
+              <p></p>
+            </div>
+            <div class="back">
+              <i id="12" class=""></i>
+            </div>
+          </div>
+        </div>
+        <div id="row4" class="row">
+          <div class="flip card">
+            <div class="front">
+              <p></p>
+            </div>
+            <div class="back">
+              <i id="13" class=""></i>
+            </div>
+          </div>
+          <div class="flip card">
+            <div class="front">
+              <p></p>
+            </div>
+            <div class="back">
+              <i id="14" class=""></i>
+            </div>
+          </div>
+          <div class="flip card">
+            <div class="front">
+              <p></p>
+            </div>
+            <div class="back">
+              <i id="15" class=""></i>
+            </div>
+          </div>
+          <div class="flip card">
+            <div class="front">
+              <p></p>
+            </div>
+            <div class="back">
+              <i id="16" class=""></i>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="btn-wrapper">
-      <button id="nG">New game</button>
-    </div>
-    <div id="game-grid" class="empty">
-      <div id="row1" class="row">
-        <div class="flip card">
-          <div class="front">
-            <p></p>
-          </div>
-          <div class="back">
-            <i id="1" class=""></i>
-          </div>
-        </div>
-        <div class="flip card">
-          <div class="front">
-            <p></p>
-          </div>
-          <div class="back">
-            <i id="2" class=""></i>
-          </div>
-        </div>
-        <div class="flip card">
-          <div class="front">
-            <p></p>
-          </div>
-          <div class="back">
-            <i id="3" class=""></i>
-          </div>
-        </div>
-        <div class="flip card">
-          <div class="front">
-            <p></p>
-          </div>
-          <div class="back">
-            <i id="4" class=""></i>
-          </div>
-        </div>
-      </div>
-      <div id="row2" class="row">
-        <div class="flip card">
-          <div class="front">
-            <p></p>
-          </div>
-          <div class="back">
-            <i id="5" class=""></i>
-          </div>
-        </div>
-        <div class="flip card">
-          <div class="front">
-            <p></p>
-          </div>
-          <div class="back">
-            <i id="6" class=""></i>
-          </div>
-        </div>
-        <div class="flip card">
-          <div class="front">
-            <p></p>
-          </div>
-          <div class="back">
-            <i id="7" class=""></i>
-          </div>
-        </div>
-        <div class="flip card">
-          <div class="front">
-            <p></p>
-          </div>
-          <div class="back">
-            <i id="8" class=""></i>
-          </div>
-        </div>
-      </div>
-      <div id="row3" class="row">
-        <div class="flip card">
-          <div class="front">
-            <p></p>
-          </div>
-          <div class="back">
-            <i id="9" class=""></i>
-          </div>
-        </div>
-        <div class="flip card">
-          <div class="front">
-            <p></p>
-          </div>
-          <div class="back">
-            <i id="10" class=""></i>
-          </div>
-        </div>
-        <div class="flip card">
-          <div class="front">
-            <p></p>
-          </div>
-          <div class="back">
-            <i id="11" class=""></i>
-          </div>
-        </div>
-        <div class="flip card">
-          <div class="front">
-            <p></p>
-          </div>
-          <div class="back">
-            <i id="12" class=""></i>
-          </div>
-        </div>
-      </div>
-      <div id="row4" class="row">
-        <div class="flip card">
-          <div class="front">
-            <p></p>
-          </div>
-          <div class="back">
-            <i id="13" class=""></i>
-          </div>
-        </div>
-        <div class="flip card">
-          <div class="front">
-            <p></p>
-          </div>
-          <div class="back">
-            <i id="14" class=""></i>
-          </div>
-        </div>
-        <div class="flip card">
-          <div class="front">
-            <p></p>
-          </div>
-          <div class="back">
-            <i id="15" class=""></i>
-          </div>
-        </div>
-        <div class="flip card">
-          <div class="front">
-            <p></p>
-          </div>
-          <div class="back">
-            <i id="16" class=""></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
