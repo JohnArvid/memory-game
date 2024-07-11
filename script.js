@@ -137,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     shuffleArray(icons);
-    console.log(icons);
     // Build randomizer to pick n from icons
     // Maybe it's easier to do a FY-shuffle and pick the amount from start?
     // Save in new arr that is copied and doubled in iconArr
@@ -152,8 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function assignIcons() {
-      for (let i = 1; i < 17; i++) {
-        let currentID = i;
+      for (let i = 0; i < numberOfCards; i++) {
+        let currentID = i + 1;
         let iconWrapper = document.getElementById(currentID);
         iconWrapper.className = '';
         let iconNames = getIcon().split(' ');
