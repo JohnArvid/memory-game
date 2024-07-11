@@ -70,11 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function initBoard(numberOfCards) {
     // numberOfCards is selected in dropdown
     // 16(4*4), 20(5*4), 25(5*5), 30(5*6), 36(6*6)
-    // pseudocode:
+    let numberOfRows = 4;
+    let numberOfCols = 4;
+
     /*
-      let numberOfRows
-      let numberOfCols
-      switch numberOfCards {
+    switch numberOfCards {
         case = 16 {
           numberOfRows = 4
           numberOfCols = 4
@@ -84,13 +84,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }...
       }
     */
-    let grid = document.getElementById('game-grid');
-    for (let i = 0; i < numberOfRows; i++) {
+    let iconWrapperId = 1;
+    ui.gameGrid.textContent = '';
+    for (let i = 1; i < numberOfRows + 1; i++) {
       let row = document.createElement('div');
       row.id = 'row' + i;
       row.classList.add('row');
-      grid.appendChild(row);
-      for (let j = 0; j < numberOfCols; j++) {
+      ui.gameGrid.appendChild(row);
+      for (let j = 1; j < numberOfCols + 1; j++) {
         let card = document.createElement('div');
         card.classList.add('flip', 'card');
         let front = document.createElement('div');
@@ -102,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let back = document.createElement('div');
         back.classList.add('back');
         let iconElement = document.createElement('i');
-        iconElement.id = j + 1;
+        iconElement.id = iconWrapperId++;
         iconElement.classList = ' ';
         card.appendChild(back);
         back.appendChild(iconElement);
@@ -154,8 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     shuffleArray(icons);
-
-    const iconArr = [...icons, ...icons];
+    let shuffledIcons = icons.slice(0, numberOfCards / 2);
+    const iconArr = [...shuffledIcons, ...shuffledIcons];
 
     // Do I need to shuffle the array as I'm doing this below?
     function getIcon() {
@@ -177,6 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    initBoard(numberOfCards);
     assignIcons();
 
     ui.gameGrid.addEventListener('click', checkCard);
