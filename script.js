@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function initBoard(numberOfCards) {
     // numberOfCards is selected in dropdown
     // 16(4*4), 20(5*4), 25(5*5), 30(5*6), 36(6*6)
-    // pseudocode: 
+    // pseudocode:
     /*
       let numberOfRows
       let numberOfCols
@@ -129,6 +129,15 @@ document.addEventListener('DOMContentLoaded', () => {
       'fa-solid fa-yin-yang',
     ];
 
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    shuffleArray(icons)
+    console.log(icons)
     // Build randomizer to pick n from icons
     // Maybe it's easier to do a FY-shuffle and pick the amount from start?
     // Save in new arr that is copied and doubled in iconArr
