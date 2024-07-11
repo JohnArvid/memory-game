@@ -83,14 +83,31 @@ document.addEventListener('DOMContentLoaded', () => {
         case = 20 {
         }...
       }
-      
-      for (let i = 0; i < numberOfRows; i++) {
-        create row element
-        for (let j = 0; j < numberOfCols; j++){
-          create and append cards to row
-        }
-      }
     */
+    let grid = document.getElementById('game-grid');
+    for (let i = 0; i < numberOfRows; i++) {
+      let row = document.createElement('div');
+      row.id = 'row' + i;
+      row.classList.add('row');
+      grid.appendChild(row);
+      for (let j = 0; j < numberOfCols; j++) {
+        let card = document.createElement('div');
+        card.classList.add('flip', 'card');
+        let front = document.createElement('div');
+        front.classList.add('front');
+        let frontP = document.createElement('p');
+        row.appendChild(card);
+        card.appendChild(front);
+        front.appendChild(frontP);
+        let back = document.createElement('div');
+        back.classList.add('back');
+        let iconElement = document.createElement('i');
+        iconElement.id = j + 1;
+        iconElement.classList = ' ';
+        card.appendChild(back);
+        back.appendChild(iconElement);
+      }
+    }
   }
 
   function newGame() {
@@ -137,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     shuffleArray(icons);
-    
+
     const iconArr = [...icons, ...icons];
 
     // Do I need to shuffle the array as I'm doing this below?
