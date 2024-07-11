@@ -68,8 +68,29 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function initBoard(numberOfCards) {
-    // numberOfCards is selected 16, 25, 36 ?
-    // 
+    // numberOfCards is selected in dropdown
+    // 16(4*4), 20(5*4), 25(5*5), 30(5*6), 36(6*6)
+    // pseudocode: 
+    /*
+      let numberOfRows
+      let numberOfCols
+      switch numberOfCards {
+        case = 16 {
+          numberOfRows = 4
+          numberOfCols = 4
+          break
+        }
+        case = 20 {
+        }...
+      }
+      
+      for (let i = 0; i < numberOfRows; i++) {
+        create row element
+        for (let j = 0; j < numberOfCols; j++){
+          create and append cards to row
+        }
+      }
+    */
   }
 
   function newGame() {
