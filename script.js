@@ -136,8 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    shuffleArray(icons)
-    console.log(icons)
+    shuffleArray(icons);
+    console.log(icons);
     // Build randomizer to pick n from icons
     // Maybe it's easier to do a FY-shuffle and pick the amount from start?
     // Save in new arr that is copied and doubled in iconArr
