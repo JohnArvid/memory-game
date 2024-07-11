@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     roundCounter.reset();
 
     ui.roundCount.textContent = 'Number of rounds: ';
-    ui.cards.forEach((card) => (card.className = 'flip card'));
+    // ui.cards.forEach((card) => (card.className = 'flip card'));
 
     const icons = [
       'fa-solid fa-brain',
