@@ -70,51 +70,49 @@ document.addEventListener('DOMContentLoaded', () => {
   
 
   function newGame() {
-  function initBoard(numberOfCards) {
-    // numberOfCards is selected in dropdown
-    // 16(4*4), 20(5*4), 25(5*5), 30(5*6), 36(6*6)
-    let numberOfRows = 4;
-    let numberOfCols = 4;
-
-    /*
-    switch numberOfCards {
-        case = 16 {
-          numberOfRows = 4
-          numberOfCols = 4
-          break
+    function initBoard(numberOfCards) {
+      // numberOfCards is selected in dropdown
+      // 16(4*4), 20(5*4), 25(5*5), 30(5*6), 36(6*6)
+      let numberOfRows = 4;
+      let numberOfCols = 4;
+  
+      /*
+      switch numberOfCards {
+          case = 16 {
+            numberOfRows = 4
+            numberOfCols = 4
+            break
+          }
+          case = 20 {
+          }...
         }
-        case = 20 {
-        }...
-      }
-    */
-    let iconWrapperId = 1;
-    ui.gameGrid.textContent = '';
-    for (let i = 1; i < numberOfRows + 1; i++) {
-      let row = document.createElement('div');
-      row.id = 'row' + i;
-      row.classList.add('row');
-      ui.gameGrid.appendChild(row);
-      for (let j = 1; j < numberOfCols + 1; j++) {
-        let card = document.createElement('div');
-        card.classList.add('flip', 'card');
-        let front = document.createElement('div');
-        front.classList.add('front');
-        let frontP = document.createElement('p');
-        row.appendChild(card);
-        card.appendChild(front);
-        front.appendChild(frontP);
-        let back = document.createElement('div');
-        back.classList.add('back');
-        let iconElement = document.createElement('i');
-        iconElement.id = iconWrapperId++;
-        iconElement.classList = ' ';
-        card.appendChild(back);
-        back.appendChild(iconElement);
+      */
+      let iconWrapperId = 1;
+      ui.gameGrid.textContent = '';
+      for (let i = 1; i < numberOfRows + 1; i++) {
+        let row = document.createElement('div');
+        row.id = 'row' + i;
+        row.classList.add('row');
+        ui.gameGrid.appendChild(row);
+        for (let j = 1; j < numberOfCols + 1; j++) {
+          let card = document.createElement('div');
+          card.classList.add('flip', 'card');
+          let front = document.createElement('div');
+          front.classList.add('front');
+          let frontP = document.createElement('p');
+          row.appendChild(card);
+          card.appendChild(front);
+          front.appendChild(frontP);
+          let back = document.createElement('div');
+          back.classList.add('back');
+          let iconElement = document.createElement('i');
+          iconElement.id = iconWrapperId++;
+          iconElement.classList = ' ';
+          card.appendChild(back);
+          back.appendChild(iconElement);
+        }
       }
     }
-  }
-
-  function newGame() {
     //ADD AN ALERT IF SOME CARDS ARE FLIPPED OR SUCCESS IS MORE THAN 0 AND LESS THAN 16
     //IF NO DON'T
     //IF "YES" DO
@@ -161,7 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let shuffledIcons = icons.slice(0, numberOfCards / 2);
     const iconArr = [...shuffledIcons, ...shuffledIcons];
 
-    // Do I need to shuffle the array as I'm doing this below?
     function getIcon() {
       let rand = Math.floor(Math.random() * iconArr.length);
       let str = iconArr[rand];
@@ -202,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (ui.successCards().length == 16) {
       ui.cards.forEach((card) => card.classList.remove('flip'));
       updateMessage('START NEW GAME?');
-ui.newGame.focus();
+      ui.newGame.focus();
     }
   }
 
