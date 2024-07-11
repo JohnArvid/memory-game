@@ -199,6 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (ui.successCards().length == 16) {
       ui.cards.forEach((card) => card.classList.remove('flip'));
       updateMessage('START NEW GAME?');
+ui.newGame.focus();
     }
   }
 
