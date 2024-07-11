@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'fa-solid fa-marker',
       'fa-solid fa-walkie-talkie',
       'fa-solid fa-square-xmark',
-'fa-solid fa-phone',
+      'fa-solid fa-phone',
       'fa-solid fa-envelope',
       'fa-solid fa-heart',
       'fa-solid fa-bomb',
@@ -127,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
       'fa-brands fa-square-js',
       'fa-solid fa-clone',
       'fa-solid fa-yin-yang',
-      // Expand list
     ];
 
     // Build randomizer to pick n from icons
