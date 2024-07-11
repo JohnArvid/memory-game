@@ -67,6 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  
+
+  function newGame() {
   function initBoard(numberOfCards) {
     // numberOfCards is selected in dropdown
     // 16(4*4), 20(5*4), 25(5*5), 30(5*6), 36(6*6)
