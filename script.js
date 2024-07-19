@@ -183,8 +183,8 @@ document.addEventListener('DOMContentLoaded', () => {
     assignIcons();
 
     ui.gameGrid.addEventListener('click', checkCard);
-    ui.gameGrid.classList.remove('empty');
-    ui.gameGrid.classList.add('active');
+    ui.gameGrid.className = '';
+    ui.gameGrid.classList.add('active', 'cards' + numberOfCards);
   }
 
   function nextRound() {

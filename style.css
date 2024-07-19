@@ -81,8 +81,7 @@ p#msg {
 }
 
 
-/* How to handle sizing of cards when 36? 
-   Solution should scale */
+
 .front {
   width: 16vh;
   height: 16vh;
@@ -93,6 +92,10 @@ p#msg {
   -webkit-transform: rotateY(0deg);
           transform: rotateY(0deg);
 
+}
+.cards36 .front, .cards36 i {
+  width: 10vh;
+  height: 10vh;
 }
 
 .back {
@@ -129,6 +132,13 @@ i {
   background: #888888;
 }
 
+
 .fa, .fa-brands, .fa-classic, .fa-regular, .fa-sharp, .fa-solid, .fab, .far, .fas {
   line-height: 5;
+}
+
+
+.cards36 .fa, .cards36 .fa-brands, .cards36 .fa-classic, .cards36 .fa-regular,
+.cards36 .fa-sharp, .cards36 .fa-solid, .cards36 .fab, .cards36 .far, .cards36 .fas {
+  line-height: 3;
 }
