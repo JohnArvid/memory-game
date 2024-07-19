@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* static ui elements */
     gameGrid: document.getElementById('game-grid'),
     newGame: document.getElementById('nG'),
+    numberOfCards: document.getElementById('numberOfCards'),
     message: document.getElementById('msg'),
     roundCount: document.getElementById('rndCnt'),
     cards: document.querySelectorAll('.card'),
@@ -15,7 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
     successCards: () => document.querySelectorAll('.success'),
   };
 
-  const numberOfCards = 16;
+  /* needs to be updated whenever numerOfCards select element is changed
+   + newGame is clicked */
+  let numberOfCards = 16;
+
+  function updateNumberOfCards() {
+    numberOfCards = ui.numberOfCards.value;
+    console.log(numberOfCards)
+  }
 
   const roundCounter = {
     numberOfRounds: 0,
@@ -75,38 +83,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function newGame() {
     function initBoard(numberOfCards) {
-      // numberOfCards is selected in dropdown
-      // 16(4*4), 20(5*4), 25(5*5), 30(5*6), 36(6*6)
-      let numberOfRows = 4;
-      let numberOfCols = 4;
-  
-      /*
-      switch numberOfCards {
-          case = 16 {
-            numberOfRows = 4
-            numberOfCols = 4
-            break
-          }
-          case = 20 {
-          }...
-        }
-      */
+      let squareRoot = Math.sqrt(numberOfCards);
+
       let iconWrapperId = 1;
       ui.gameGrid.textContent = '';
-      for (let i = 1; i < numberOfRows + 1; i++) {
+
+      for (let i = 1; i < squareRoot + 1; i++) {
         let row = document.createElement('div');
         row.id = 'row' + i;
         row.classList.add('row');
         ui.gameGrid.appendChild(row);
-        for (let j = 1; j < numberOfCols + 1; j++) {
+
+        for (let j = 1; j < squareRoot + 1; j++) {
           let card = document.createElement('div');
           card.classList.add('flip', 'card');
+
           let front = document.createElement('div');
           front.classList.add('front');
+
           let frontP = document.createElement('p');
+
           row.appendChild(card);
           card.appendChild(front);
           front.appendChild(frontP);
+
           let back = document.createElement('div');
           back.classList.add('back');
           let iconElement = document.createElement('i');
@@ -209,4 +209,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   ui.gameGrid.addEventListener('click', checkCard);
   ui.newGame.addEventListener('click', newGame);
+  ui.numberOfCards.addEventListener('change', updateNumberOfCards);
 });
