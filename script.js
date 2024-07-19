@@ -1,11 +1,15 @@
+'use strict';
+
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
   const ui = {
+    /* static ui elements */
     gameGrid: document.getElementById('game-grid'),
     newGame: document.getElementById('nG'),
     message: document.getElementById('msg'),
     roundCount: document.getElementById('rndCnt'),
     cards: document.querySelectorAll('.card'),
+    /* dynamic ui elements */
     flippedCards: () => document.querySelectorAll('.flipIt'),
     clickableCards: () => document.querySelectorAll('.flip'),
     successCards: () => document.querySelectorAll('.success'),
