@@ -80,6 +80,9 @@ p#msg {
   background: #ecf4f3;
 }
 
+
+/* How to handle sizing of cards when 36? 
+   Solution should scale */
 .front {
   width: 16vh;
   height: 16vh;
