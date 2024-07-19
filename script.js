@@ -1,7 +1,6 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-  'use strict';
   const ui = {
     /* static ui elements */
     gameGrid: document.getElementById('game-grid'),
@@ -78,8 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
-
-  
 
   function newGame() {
     function initBoard(numberOfCards) {
